@@ -3,7 +3,7 @@
 
     <v-card min-width="300px" height="90%">
       <v-card-title class="font-weight-bold">{{ title }}</v-card-title>
-      <v-card-text height="300px" class="pre-wrap">{{ content }}</v-card-text>
+      <v-card-text height="300px" class="pre-wrap">{{ detail }}</v-card-text>
       <v-divider></v-divider>
     </v-card>
   </div>
