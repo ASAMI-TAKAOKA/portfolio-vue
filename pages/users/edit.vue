@@ -4,11 +4,21 @@
       <v-card width="400px" class="mx-auto mt-5">
         <v-card-title>
           <h1 class="display-1">
-            メールアドレス変更
+            会員情報の変更
           </h1>
         </v-card-title>
         <v-card-text>
           <v-form ref="form" lazy-validation>
+            <v-text-field
+              v-model="user.name"
+              prepend-icon="mdi-account"
+              label="新しい名前"
+            />
+            <v-text-field
+              v-model="user.nickname"
+              prepend-icon="mdi-account"
+              label="新しいニックネーム"
+            />
             <v-text-field
               v-model="user.email"
               prepend-icon="mdi-email"
@@ -18,13 +28,13 @@
               v-model="user.password"
               prepend-icon="mdi-lock"
               append-icon="mdi-eye-off"
-              label="パスワード"
+              label="新しいパスワード"
             />
             <v-card-actions>
               <v-btn
                 color="light-green darken-1"
                 class="white--text"
-                @click="editEmail"
+                @click="updateUserInfo"
               >
                 保存する
               </v-btn>
@@ -42,13 +52,15 @@ export default {
   data() {
     return {
       user: {
+        name: '',
+        nickname: '',
         password: '',
         email: '',
       },
     }
   },
   methods: {
-    editEmail() {
+    updateUserInfo() {
       this.$axios
         .put('api/v1/auth', this.user, {
           headers: {
@@ -62,7 +74,7 @@ export default {
           localStorage.setItem('client', response.headers.client)
           localStorage.setItem('uid', response.headers.uid)
           localStorage.setItem('token-type', response.headers['token-type'])
-          window.location.href = '/'
+          window.location.href = '/afterEdittedUserInfo'
         })
     },
   },

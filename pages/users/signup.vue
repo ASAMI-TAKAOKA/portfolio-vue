@@ -67,15 +67,6 @@ export default {
     registerUser() {
       this.$axios.post('/api/v1/auth', this.user)
         .then((response) => {
-          // console.log(response)
-          // console.log(response.data)
-          // console.log(response.data.data)
-          // console.log(response.data.data.email)
-          // console.log(response.config)
-          // console.log(response.config.data.email)
-          // console.log(response.config.data.password)
-
-          // this.login
           window.location.href = '/afterSignedUp'
       })
     }
