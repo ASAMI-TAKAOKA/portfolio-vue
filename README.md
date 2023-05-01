@@ -9,3 +9,6 @@
 
 ![スクリーンショット 2023-05-01 21 49 24](https://user-images.githubusercontent.com/77926245/235454118-bacde395-96cb-4dce-828d-ca8ab2fdfa79.png)
 
+![スクリーンショット 2023-05-01 22 06 28](https://user-images.githubusercontent.com/77926245/235455629-048e93f8-e11b-462b-b63b-949f59d03746.png)
+
+![スクリーンショット 2023-05-01 22 07 20](https://user-images.githubusercontent.com/77926245/235455636-3679357f-00e9-4b78-bd9b-6888c0c4b9e9.png)
