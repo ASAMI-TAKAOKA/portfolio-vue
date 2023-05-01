@@ -9,6 +9,16 @@
       <v-card-text>
         <v-form ref="form" lazy-validation>
           <v-text-field
+            v-model="user.name"
+            prepend-icon="mdi-account"
+            label="名前"
+          />
+          <v-text-field
+            v-model="user.nickname"
+            prepend-icon="mdi-account"
+            label="ニックネーム"
+          />
+          <v-text-field
             v-model="user.email"
             prepend-icon="mdi-email"
             label="メールアドレス"
@@ -45,6 +55,8 @@ export default {
   data() {
     return {
       user: {
+        name: '',
+        nickname: '',
         email: '',
         password: '',
         password_confirmation: ''
@@ -66,17 +78,7 @@ export default {
           // this.login
           window.location.href = '/afterSignedUp'
       })
-    },
-    login(){
-        this.$auth.loginWith('local',{
-          data: {
-            email: response.config.data.email,
-            password: response.config.data.password
-          },
-        })
-        // console.log(data.email)
-        // console.log(data.password)
-      },
+    }
   },
 }
 </script>
