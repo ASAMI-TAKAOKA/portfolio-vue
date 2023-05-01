@@ -42,23 +42,41 @@
 
 <script>
 export default {
-  name: 'App',
-  auth: false,
   data() {
     return {
       user: {
-        password: '',
         email: '',
-        password_confirmation: '',
+        password: '',
+        password_confirmation: ''
       },
     }
   },
   methods: {
     registerUser() {
-      this.$axios.post('/api/v1/auth', this.user).then((response) => {
-        window.location.href = '/users/comfirmation'
+      this.$axios.post('/api/v1/auth', this.user)
+        .then((response) => {
+          // console.log(response)
+          // console.log(response.data)
+          // console.log(response.data.data)
+          // console.log(response.data.data.email)
+          // console.log(response.config)
+          // console.log(response.config.data.email)
+          // console.log(response.config.data.password)
+
+          // this.login
+          window.location.href = '/afterSignedUp'
       })
     },
+    login(){
+        this.$auth.loginWith('local',{
+          data: {
+            email: response.config.data.email,
+            password: response.config.data.password
+          },
+        })
+        // console.log(data.email)
+        // console.log(data.password)
+      },
   },
 }
 </script>
