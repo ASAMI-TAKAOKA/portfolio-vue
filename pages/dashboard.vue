@@ -12,7 +12,7 @@
       >
       Logoutする
       </v-btn>
-      <v-btn color="primary" @click="openModal">新規投稿</v-btn>
+      <v-btn color="primary" @click="openPostCreateModal">新規投稿</v-btn>
       <post-create-modal ref="postCreateModal"></post-create-modal>
       <contents-card
         :posts="posts"
@@ -42,7 +42,7 @@ export default {
     logout() {
       this.$auth.logout()
     },
-    openModal() {
+    openPostCreateModal() {
       this.$refs.postCreateModal.openDialog()
     }
   }

@@ -13,9 +13,17 @@
             <v-card-title class="font-weight-bold">{{ post.title }}</v-card-title>
             <v-card-text height="300px" class="pre-wrap">{{ post.body }}</v-card-text>
             <v-divider></v-divider>
+            <v-card-actions>
+              <v-btn color="primary" text @click="openPostDetailModal(post)">詳細</v-btn>
+            </v-card-actions>
           </v-card>
         </v-col>
       </v-row>
+
+      <post-detail-modal
+        v-model="openDialog"
+        :post="selectedPost"
+      />
 
       <v-row justify="center">
         <v-pagination
@@ -32,7 +40,12 @@
 </template>
 
 <script>
+import postDetailModal from '@/components/postDetailModal.vue'
+
 export default {
+  components: {
+    postDetailModal
+  },
   name: 'ContentsCard',
   props: {
     posts: {
@@ -43,7 +56,9 @@ export default {
   data() {
     return {
       currentPage: 1,
-      postsPerPage: 6
+      postsPerPage: 6,
+      openDialog: false,
+      selectedPost: {}
     }
   },
   computed: {
@@ -62,6 +77,10 @@ export default {
   methods: {
     onPageChanged(pageNumber) {
       this.currentPage = pageNumber
+    },
+    openPostDetailModal(post) {
+      this.selectedPost = post
+      this.openDialog = true
     }
   }
 }
