@@ -56,9 +56,9 @@ export default {
     },
     submitPost() {
       const formData = new FormData()
-      formData.append('product_name', this.post.productName)
+      formData.append('productName', this.post.productName)
       formData.append('price', this.post.price)
-      formData.append('store_information', this.post.storeInformation)
+      formData.append('storeInformation', this.post.storeInformation)
       formData.append('body', this.post.body)
       if (this.post.image) {
         formData.append('image', this.post.image)

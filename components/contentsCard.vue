@@ -83,13 +83,21 @@ export default {
       this.currentPage = pageNumber
     },
     openPostDetailModal(post) {
+      // TODO:railsのActiveModelSerializersで予めキャメルケースに変換してから取得できるようにする
       this.$axios.get('api/v1/posts/' + post.id)
-      .then(response => {
-        // console.log(response.data.post)
-        this.selectedPost = response.data.post
-        this.openDialog = true
-        this.showPostDetailModal = true
-      })
+        .then(response => {
+          const post = response.data.post
+          const transformedPost = {}
+          for (const key in post) {
+            if (post.hasOwnProperty(key)) {
+              const transformedKey = key.replace(/_([a-z])/g, (match, p1) => p1.toUpperCase())
+              transformedPost[transformedKey] = post[key]
+            }
+          }
+          this.selectedPost = transformedPost
+          this.openDialog = true
+          this.showPostDetailModal = true
+        })
     }
   }
 }
