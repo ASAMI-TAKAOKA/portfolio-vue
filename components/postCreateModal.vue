@@ -7,8 +7,20 @@
         </v-card-title>
         <v-card-text>
           <v-form @submit.prevent="submitPost">
-            <v-text-field v-model="post.title" label="タイトル" required></v-text-field>
-            <v-textarea v-model="post.body" label="本文" required></v-textarea>
+            <v-text-field v-model="post.productName" label="商品名" required></v-text-field>
+            <v-text-field v-model="post.price" label="価格" required></v-text-field>
+            <v-file-input
+              v-model="post.image"
+              label="画像"
+              :rules="fileSizeRule"
+              outlined
+            >
+              <template v-slot:prepend-inner>
+                <v-icon>mdi-camera</v-icon>
+              </template>
+            </v-file-input>
+            <v-text-field v-model="post.storeInformation" label="お店情報" required></v-text-field>
+            <v-textarea v-model="post.body" label="コメント" required></v-textarea>
           </v-form>
         </v-card-text>
         <v-card-actions>
@@ -20,7 +32,6 @@
     </v-dialog>
   </div>
 </template>
-
 <script>
 export default {
   data() {
@@ -28,8 +39,11 @@ export default {
       dialog: false,
       formTitle: '新規投稿',
       post: {
-        title: '',
-        body: ''
+        productName: '',
+        price: '',
+        storeInformation: '',
+        body: '',
+        image: null
       }
     }
   },
@@ -41,10 +55,21 @@ export default {
       this.dialog = false
     },
     submitPost() {
-      this.$axios.post('/api/v1/posts', {
-        title: this.post.title,
-        body: this.post.body
-      })
+      const formData = new FormData()
+      formData.append('product_name', this.post.productName)
+      formData.append('price', this.post.price)
+      formData.append('store_information', this.post.storeInformation)
+      formData.append('body', this.post.body)
+      if (this.post.image) {
+        formData.append('image', this.post.image)
+      }
+      //ContentTypeを変える
+      const config = {
+        header: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+      this.$axios.post('/api/v1/posts', formData)
         .then(response => {
           this.dialog = false
           this.$router.go({path: this.$router.currentRoute.path, force: true})
@@ -52,6 +77,11 @@ export default {
         .catch(error => {
           console.log(error)
         })
+    }
+  },
+  computed: {
+    fileSizeRule() {
+        v => !v || (v.size <= 2 * 1024 * 1024) || 'ファイルサイズは2MB以内である必要があります'
     }
   }
 }

@@ -10,8 +10,11 @@
           md="4"
         >
           <v-card min-width="300px" height="90%">
-            <v-card-title class="font-weight-bold">{{ post.title }}</v-card-title>
+            <v-card-title class="font-weight-bold">{{ post.productName }}</v-card-title>
+            <v-card-text height="300px" class="pre-wrap">{{ post.price }}</v-card-text>
+            <v-card-text height="300px" class="pre-wrap">{{ post.storeInformation }}</v-card-text>
             <v-card-text height="300px" class="pre-wrap">{{ post.body }}</v-card-text>
+            <v-card-text height="300px" class="pre-wrap">{{ post.createdAt }}</v-card-text>
             <v-divider></v-divider>
             <v-card-actions>
               <v-btn color="primary" text @click="openPostDetailModal(post)">詳細</v-btn>
