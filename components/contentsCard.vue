@@ -21,7 +21,7 @@
       </v-row>
 
       <post-detail-modal
-        v-model="openDialog"
+        :showPostDetailModal="showPostDetailModal"
         :post="selectedPost"
       />
 
@@ -58,7 +58,8 @@ export default {
       currentPage: 1,
       postsPerPage: 6,
       openDialog: false,
-      selectedPost: {}
+      selectedPost: {},
+      showPostDetailModal: false
     }
   },
   computed: {
@@ -81,6 +82,7 @@ export default {
     openPostDetailModal(post) {
       this.selectedPost = post
       this.openDialog = true
+      this.showPostDetailModal = true
     }
   }
 }
