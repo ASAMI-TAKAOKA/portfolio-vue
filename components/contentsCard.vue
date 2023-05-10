@@ -21,8 +21,8 @@
       </v-row>
 
       <post-detail-modal
-        :showPostDetailModal="showPostDetailModal"
-        :post="selectedPost"
+        :show-post-detail-modal.sync="showPostDetailModal"
+        :selected-post="selectedPost"
       />
 
       <v-row justify="center">
@@ -80,9 +80,13 @@ export default {
       this.currentPage = pageNumber
     },
     openPostDetailModal(post) {
-      this.selectedPost = post
-      this.openDialog = true
-      this.showPostDetailModal = true
+      this.$axios.get('api/v1/posts/' + post.id)
+      .then(response => {
+        // console.log(response.data.post)
+        this.selectedPost = response.data.post
+        this.openDialog = true
+        this.showPostDetailModal = true
+      })
     }
   }
 }

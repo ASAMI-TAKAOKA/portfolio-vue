@@ -6,8 +6,8 @@
           <span class="headline">{{ formTitle }}</span>
         </v-card-title>
         <v-card-text>
-          <p><strong>タイトル: </strong>{{ post.title }}</p>
-          <p><strong>本文: </strong>{{ post.body }}</p>
+          <p><strong>タイトル: </strong>{{ selectedPost.title }}</p>
+          <p><strong>本文: </strong>{{ selectedPost.body }}</p>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -22,7 +22,7 @@
 <script>
 export default {
   props: {
-    post: {
+    selectedPost: {
       type: Object,
       default: null
     },
@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     closeDialog() {
-      this.showPostDetailModal = false
+      this.$emit('update:showPostDetailModal', false)
     },
   }
 }
