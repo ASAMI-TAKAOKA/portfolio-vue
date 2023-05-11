@@ -15,7 +15,7 @@
       <v-btn color="primary" @click="openPostCreateModal">新規投稿</v-btn>
       <post-create-modal ref="postCreateModal"></post-create-modal>
       <contents-card
-        :posts="posts"
+        :posts="postLists"
       />
     </v-container>
   </v-app>
@@ -31,12 +31,20 @@ export default {
   },
   data() {
     return {
-      posts: []
+      postLists: []
     }
   },
   async fetch() {
     const response = await this.$axios.get('/api/v1/posts')
-    this.posts = response.data.data
+    const posts = response.data.post.map(post => ({
+      id: post.id,
+      productName: post.product_name,
+      price: post.price,
+      storeInformation: post.store_information,
+      createdAt: post.created_at,
+    })
+    )
+    this.postLists = posts
   },
   methods: {
     logout() {

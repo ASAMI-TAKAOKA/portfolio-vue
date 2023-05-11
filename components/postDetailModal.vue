@@ -7,7 +7,7 @@
         </v-card-title>
         <v-card-text>
           <p><strong>商品名: </strong>{{ selectedPost.productName }}</p>
-          <p><strong>価格: </strong>{{ selectedPost.price }}</p>
+          <p><strong>価格: </strong>{{ selectedPost.price + '円' }}</p>
           <p><strong>お店情報: </strong>{{ selectedPost.storeInformation }}</p>
           <p><strong>コメント: </strong>{{ selectedPost.body }}</p>
           <p><strong>投稿日時: </strong>{{ selectedPost.createdAt }}</p>
