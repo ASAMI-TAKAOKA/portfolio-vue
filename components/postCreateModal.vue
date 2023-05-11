@@ -8,7 +8,10 @@
         <v-card-text>
           <v-form @submit.prevent="submitPost">
             <v-text-field v-model="post.productName" label="商品名" required></v-text-field>
-            <v-text-field v-model="post.price" label="価格" required></v-text-field>
+            <span>価格
+              <v-numeric v-model="post.price" label="価格" required></v-numeric>
+            </span>
+            <br>
             <v-file-input
               v-model="post.image"
               label="画像"
@@ -33,7 +36,12 @@
   </div>
 </template>
 <script>
+import VueNumericInput from 'vue-numeric-input';
+
 export default {
+  components: {
+    'v-numeric': VueNumericInput,
+  },
   data() {
     return {
       dialog: false,
@@ -86,3 +94,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+span {
+  font-size: 16px;
+}
+</style>
