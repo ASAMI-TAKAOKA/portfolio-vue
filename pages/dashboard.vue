@@ -42,6 +42,7 @@ export default {
       price: post.price,
       storeInformation: post.store_information,
       createdAt: post.created_at,
+      imageUrl: post.image_url
     })
     )
     this.postLists = posts

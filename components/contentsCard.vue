@@ -9,11 +9,14 @@
           sm="6"
           md="4"
         >
-          <v-card min-width="300px" height="90%">
+          <v-card class="py-2 px-2" min-width="300px" height="100%">
+            <div style="display: flex; justify-content: center;">
+              <v-img :src="post.imageUrl" alt="post image" height="100" max-width="100"></v-img>
+            </div>
             <v-card-title class="font-weight-bold">{{ post.productName }}</v-card-title>
-            <v-card-text height="300px" class="pre-wrap">{{ post.price + '円'}}</v-card-text>
-            <v-card-text height="300px" class="pre-wrap">{{ post.storeInformation}}</v-card-text>
-            <v-card-text height="300px" class="pre-wrap">{{ post.createdAt}}</v-card-text>
+            <v-card-text class="pre-wrap">{{ post.price + '円'}}</v-card-text>
+            <v-card-text class="pre-wrap">{{ post.storeInformation}}</v-card-text>
+            <v-card-text class="pre-wrap">{{ post.createdAt}}</v-card-text>
             <v-divider></v-divider>
             <v-card-actions>
               <v-btn height="60px" class="mb-5" color="primary" text @click="openPostDetailModal(post)">詳細</v-btn>

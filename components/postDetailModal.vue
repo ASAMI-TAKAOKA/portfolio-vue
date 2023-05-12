@@ -6,8 +6,8 @@
           <span class="headline">{{ formTitle }}</span>
         </v-card-title>
         <v-card-text>
+          <div style="text-align: center"><img :src="selectedPost.imageUrl" alt="post image"></div>
           <p><strong>商品名: </strong>{{ selectedPost.productName }}</p>
-          <img :src="selectedPost.imageUrl" alt="post image">
           <p><strong>価格: </strong>{{ selectedPost.price + '円' }}</p>
           <p><strong>お店情報: </strong>{{ selectedPost.storeInformation }}</p>
           <p><strong>コメント: </strong>{{ selectedPost.body }}</p>
