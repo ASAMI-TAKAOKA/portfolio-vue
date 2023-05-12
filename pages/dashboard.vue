@@ -4,6 +4,8 @@
       <h1>ダッシュボード</h1>
       <h5>ログイン状態:{{ $auth.loggedIn }}</h5>
       <!-- <p>{{ $auth.user }}</p> -->
+
+      <!-- 各種ボタンを表示（横並び） -->
       <v-btn
         v-if="$auth.loggedIn"
         color="light-green darken-1"
@@ -13,7 +15,13 @@
       Logoutする
       </v-btn>
       <v-btn color="primary" @click="openPostCreateModal">新規投稿</v-btn>
+      <v-btn color="secondary" @click="openAddCategoryModal">カテゴリー追加</v-btn>
+
+      <!-- 各種モーダル -->
       <post-create-modal ref="postCreateModal"></post-create-modal>
+      <add-category-modal ref="addCategoryModal"></add-category-modal>
+
+      <!-- コンテンツ一覧を表示 -->
       <contents-card
         :posts="postLists"
       />
@@ -53,6 +61,9 @@ export default {
     },
     openPostCreateModal() {
       this.$refs.postCreateModal.openDialog()
+    },
+    openAddCategoryModal() {
+      this.$refs.addCategoryModal.openDialog()
     }
   }
 }
