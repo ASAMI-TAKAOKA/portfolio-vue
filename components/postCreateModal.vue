@@ -8,6 +8,14 @@
         <v-card-text>
           <v-form @submit.prevent="submitPost">
             <v-text-field v-model="post.productName" label="商品名" required></v-text-field>
+            <v-select
+              v-model="post.categoryIds"
+              :items="categories"
+              item-value="id"
+              item-text="name"
+              label="カテゴリー"
+              required
+            ></v-select>
             <span>価格
               <v-numeric v-model="post.price" label="価格" required></v-numeric>
             </span>
@@ -42,6 +50,12 @@ export default {
   components: {
     'v-numeric': VueNumericInput,
   },
+  props: {
+    categories: {
+      type: Array,
+      default: () => []
+    }
+  },
   data() {
     return {
       dialog: false,
@@ -51,7 +65,8 @@ export default {
         price: '',
         storeInformation: '',
         body: '',
-        image: null
+        image: null,
+        categoryIds: null
       }
     }
   },
@@ -70,6 +85,9 @@ export default {
       formData.append('body', this.post.body)
       if (this.post.image) {
         formData.append('image', this.post.image)
+      }
+      if (this.post.categoryIds) {
+      formData.append('categoryIds', this.post.categoryIds)
       }
       //ContentTypeを変える
       const config = {

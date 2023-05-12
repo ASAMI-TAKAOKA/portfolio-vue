@@ -8,6 +8,7 @@
         <v-card-text>
           <div style="text-align: center"><img :src="selectedPost.imageUrl" alt="post image"></div>
           <p><strong>商品名: </strong>{{ selectedPost.productName }}</p>
+          <p><strong>カテゴリー: </strong>{{ isCategoryName }}</p>
           <p><strong>価格: </strong>{{ selectedPost.price + '円' }}</p>
           <p><strong>お店情報: </strong>{{ selectedPost.storeInformation }}</p>
           <p><strong>コメント: </strong>{{ selectedPost.body }}</p>
@@ -50,6 +51,15 @@ export default {
     closeDialog() {
       this.$emit('update:showPostDetailModal', false)
     },
+  },
+  computed: {
+    isCategoryName() {
+      if (this.selectedPost && this.selectedPost.categoryName) {
+      return this.selectedPost.categoryName.join(", ")
+    } else {
+      return ""
+    }
+    }
   }
 }
 </script>
