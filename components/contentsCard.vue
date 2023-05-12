@@ -11,7 +11,7 @@
         >
           <v-card class="py-2 px-2" min-width="300px" height="100%">
             <div style="display: flex; justify-content: center;">
-              <v-img :src="post.imageUrl" alt="post image" height="100" max-width="100"></v-img>
+              <v-img :src="post.imageUrl" alt="post image" height="200" max-width="100%" contain></v-img>
             </div>
             <v-card-text class="pre-wrap">{{ post.categoryName }}</v-card-text>
             <v-card-title class="font-weight-bold">{{ post.productName }}</v-card-title>
