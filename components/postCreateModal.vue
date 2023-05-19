@@ -9,11 +9,29 @@
           <v-form @submit.prevent="submitPost">
             <v-text-field v-model="post.productName" label="商品名" required></v-text-field>
             <v-select
-              v-model="post.categoryIds"
-              :items="categories"
+              v-model="selectedParentCategoryId"
+              :items="parentCategoryArray"
               item-value="id"
               item-text="name"
-              label="カテゴリー"
+              label="親カテゴリー"
+              required
+            ></v-select>
+            <v-select
+              v-if="selectedParentCategoryId"
+              v-model="selectedChildCategoryId"
+              :items="childCategoryArray"
+              item-value="id"
+              item-text="name"
+              label="子カテゴリー"
+              required
+            ></v-select>
+            <v-select
+              v-if="selectedChildCategoryId"
+              v-model="selectedGrandchildCategoryId"
+              :items="grandchildCategoryArray"
+              item-value="id"
+              item-text="name"
+              label="孫カテゴリー"
               required
             ></v-select>
             <span>価格
@@ -43,6 +61,7 @@
     </v-dialog>
   </div>
 </template>
+
 <script>
 import VueNumericInput from 'vue-numeric-input';
 
@@ -52,6 +71,10 @@ export default {
   },
   props: {
     categories: {
+      type: Array,
+      default: () => []
+    },
+    parentCategoryArray: {
       type: Array,
       default: () => []
     }
@@ -65,9 +88,23 @@ export default {
         price: '',
         storeInformation: '',
         body: '',
-        image: null,
-        categoryIds: null
-      }
+        image: null
+      },
+      selectedParentCategoryId: null,
+      selectedChildCategoryId: null,
+      selectedGrandchildCategoryId: null,
+      childCategoryArray: [
+        {
+          id: 2,
+          name: 'サラダ野菜'
+        },
+      ],
+      grandchildCategoryArray: [
+        {
+          id: 3,
+          name: 'アスパラガス'
+        },
+      ]
     }
   },
   methods: {
@@ -86,8 +123,14 @@ export default {
       if (this.post.image) {
         formData.append('image', this.post.image)
       }
-      if (this.post.categoryIds) {
-      formData.append('categoryIds', this.post.categoryIds)
+      if (this.selectedParentCategoryId) {
+      formData.append('parentId', this.selectedParentCategoryId)
+      }
+      if (this.selectedChildCategoryId) {
+      formData.append('childrenId', this.selectedChildCategoryId)
+      }
+      if (this.selectedGrandchildCategoryId) {
+      formData.append('grandchildrenId', this.selectedGrandchildCategoryId)
       }
       //ContentTypeを変える
       const config = {
@@ -103,7 +146,7 @@ export default {
         .catch(error => {
           console.log(error)
         })
-    }
+    },
   },
   computed: {
     fileSizeRule() {

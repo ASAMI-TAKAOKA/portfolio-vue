@@ -18,7 +18,7 @@
       <v-btn color="secondary" @click="openAddCategoryModal">カテゴリー追加</v-btn>
 
       <!-- 各種モーダル -->
-      <post-create-modal ref="postCreateModal" :categories="categories"></post-create-modal>
+      <post-create-modal ref="postCreateModal" :categories="categories" :parent-category-array="parentCategoryArray"></post-create-modal>
       <add-category-modal ref="addCategoryModal"></add-category-modal>
 
       <!-- コンテンツ一覧を表示 -->
@@ -41,7 +41,8 @@ export default {
   data() {
     return {
       postLists: [],
-      categories: []
+      categories: [],
+      parentCategoryArray: []
     }
   },
   async fetch() {
@@ -65,8 +66,13 @@ export default {
     name: category.name
   }))
 
+  const parentCategoryArray = postsResponse.data.parent_category_array.map(parent_category_array => ({
+    id: parent_category_array.id,
+    name: parent_category_array.name
+  }))
   this.postLists = posts
   this.categories = categories
+  this.parentCategoryArray = parentCategoryArray
 },
   methods: {
     logout() {
