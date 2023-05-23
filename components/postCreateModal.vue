@@ -258,7 +258,7 @@ export default {
     },
     filteredChildCategoryArray() {
       // 親カテゴリーで野菜を選択した場合は、選択肢に野菜しか表示させない。
-      if (this.selectedParentCategoryId === 13) {
+      if (this.selectedParentCategoryId === 1) {
         return this.childCategoryArray.filter(category => [2, 13, 20, 33, 41].includes(category.id))
       // 親カテゴリーで果物を選択した場合は、選択肢に果物しか表示させない。
       } else if (this.selectedParentCategoryId === 57) {
