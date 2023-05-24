@@ -92,123 +92,7 @@ export default {
       },
       selectedParentCategoryId: null,
       selectedChildCategoryId: null,
-      selectedGrandchildCategoryId: null,
-      childCategoryArray: [
-        {
-          id: 2,
-          name: 'サラダ野菜'
-        },
-        {
-          id: 13,
-          name: '葉物野菜'
-        },
-        {
-          id: 20,
-          name: 'いも・根菜・豆類・かぼちゃ'
-        },
-        {
-          id: 33,
-          name: 'きのこ類'
-        },
-        {
-          id: 41,
-          name: '薬味・香味野菜'
-        },
-        {
-          id: 58,
-          name: '果物'
-        },
-        {
-          id: 68,
-          name: 'カットフルーツ・ドライフルーツ'
-        },
-        {
-          id: 71,
-          name: '冷凍果物'
-        },
-      ],
-      grandchildCategoryArray: [
-        {
-          id: 3,
-          name: 'アスパラガス'
-        },
-        {
-          id: 4,
-          name: 'オクラ'
-        },
-        {
-          id: 5,
-          name: 'かいわれ大根・スプラウト'
-        },
-        {
-          id: 6,
-          name: 'キャベツ'
-        },
-        {
-          id: 7,
-          name: 'きゅうり'
-        },
-        {
-          id: 8,
-          name: 'トマト'
-        },
-        {
-          id: 9,
-          name: 'パプリカ'
-        },
-        {
-          id: 10,
-          name: 'ブロッコリー'
-        },
-        {
-          id: 11,
-          name: 'ベビーリーフ・セロリ'
-        },
-        {
-          id: 12,
-          name: 'レタス'
-        },
-        {
-          id: 14,
-          name: '小松菜'
-        },
-        {
-          id: 15,
-          name: '春菊'
-        },
-        {
-          id: 16,
-          name: '青梗菜'
-        },
-        {
-          id: 17,
-          name: '白菜'
-        },
-        {
-          id: 18,
-          name: 'ほうれん草'
-        },
-        {
-          id: 19,
-          name: '水菜'
-        },
-        {
-          id: 59,
-          name: 'アボカド'
-        },
-        {
-          id: 60,
-          name: 'オレンジ'
-        },
-        {
-          id: 61,
-          name: 'キウイフルーツ'
-        },
-        {
-          id: 62,
-          name: 'グレープフルーツ'
-        },
-      ]
+      selectedGrandchildCategoryId: null
     }
   },
   methods: {
@@ -257,10 +141,10 @@ export default {
         v => !v || (v.size <= 2 * 1024 * 1024) || 'ファイルサイズは2MB以内である必要があります'
     },
     filteredChildCategoryArray() {
-      // 親カテゴリーで野菜を選択した場合は、選択肢に野菜しか表示させない。
+      // 親カテゴリーで野菜を選択した場合は、子カテゴリのー選択肢に野菜しか表示させない。
       if (this.selectedParentCategoryId === 1) {
         return this.childCategoryArray.filter(category => [2, 13, 20, 33, 41].includes(category.id))
-      // 親カテゴリーで果物を選択した場合は、選択肢に果物しか表示させない。
+      // 親カテゴリーで果物を選択した場合は、子カテゴリのー選択肢に果物しか表示させない。
       } else if (this.selectedParentCategoryId === 57) {
         return this.childCategoryArray.filter(category => [58, 68, 71].includes(category.id))
       } else {
@@ -268,12 +152,15 @@ export default {
       }
     },
     filteredGrandchildCategoryArray() {
+      // 子カテゴリーでサラダ野菜を選択した場合は、選択肢にサラダ野菜の子カテゴリーしか表示させない。
       if (this.selectedChildCategoryId === 2) {
         return this.grandchildCategoryArray.filter(category => [3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(category.id))
+      // 子カテゴリーで葉物野菜を選択した場合は、選択肢に葉物野菜の子カテゴリーしか表示させない。
       } else if (this.selectedChildCategoryId === 13) {
         return this.grandchildCategoryArray.filter(category => [14, 15, 16, 17, 18, 19].includes(category.id))
+      // 子カテゴリーで果物を選択した場合は、選択肢に果物の子カテゴリーしか表示させない。
       } else if (this.selectedChildCategoryId === 58) {
-        return this.grandchildCategoryArray.filter(category => [59, 60, 61, 62].includes(category.id))
+        return this.grandchildCategoryArray.filter(category => [59, 60, 61, 62, 63, 64, 65, 66, 67].includes(category.id))
       } else {
         return []
       }
