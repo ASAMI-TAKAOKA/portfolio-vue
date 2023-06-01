@@ -32,7 +32,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@/plugins/categoryData',
+    { src: '~/plugins/axios.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -94,4 +94,7 @@ export default {
   axios: {
     baseURL: 'http://localhost:3000/',
   },
+  router: {
+    middleware: ['auth']
+  }
 }
