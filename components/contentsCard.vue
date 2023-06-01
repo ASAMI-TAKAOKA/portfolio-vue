@@ -29,6 +29,7 @@
       <post-detail-modal
         :show-post-detail-modal.sync="showPostDetailModal"
         :selected-post="selectedPost"
+        :selected-user="selectedUser"
       />
 
       <v-row justify="center">
@@ -65,6 +66,7 @@ export default {
       postsPerPage: 6,
       openDialog: false,
       selectedPost: {},
+      selectedUser: {},
       showPostDetailModal: false
     }
   },
@@ -90,7 +92,10 @@ export default {
       this.$axios.get('api/v1/posts/' + post.id)
         .then(response => {
           const post = response.data.post
+          const user = response.data.user
           const transformedPost = {}
+          const transformedUser = {}
+
           for (const key in post) {
             if (post.hasOwnProperty(key)) {
               const transformedKey = key.replace(/_([a-z])/g, (match, p1) => p1.toUpperCase())
@@ -98,6 +103,14 @@ export default {
             }
           }
           this.selectedPost = transformedPost
+          for (const key in user) {
+            if (user.hasOwnProperty(key)) {
+              const transformedKey = key.replace(/_([a-z])/g, (match, p1) => p1.toUpperCase())
+              transformedUser[transformedKey] = user[key]
+            }
+          }
+          this.selectedUser = transformedUser
+
           this.openDialog = true
           this.showPostDetailModal = true
         })

@@ -12,6 +12,7 @@
           <p><strong>価格: </strong>{{ selectedPost.price + '円' }}</p>
           <p><strong>お店情報: </strong>{{ selectedPost.storeInformation }}</p>
           <p><strong>コメント: </strong>{{ selectedPost.body }}</p>
+          <p><strong>投稿者: </strong>{{ selectedUser.nickname }} さん</p>
           <p><strong>投稿日時: </strong>{{ selectedPost.createdAt }}</p>
         </v-card-text>
         <v-card-actions>
@@ -28,6 +29,10 @@
 export default {
   props: {
     selectedPost: {
+      type: Object,
+      default: null
+    },
+    selectedUser: {
       type: Object,
       default: null
     },
