@@ -3,5 +3,6 @@
 
 
 
-Uploading 画面収録 2023-06-01 18.58.28.mov…
+https://github.com/ASAMI-TAKAOKA/portfolio-vue/assets/77926245/737be3fe-ca79-4715-8f25-aa552ef76790
+
 
