@@ -17,7 +17,7 @@
 export default {
   methods: {
     goToDashboard(){
-      window.location.href = '/dashboard'
+      window.location.href = '/'
       },
 }
 }

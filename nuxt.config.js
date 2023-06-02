@@ -85,10 +85,14 @@ export default {
       }
     },
     redirect: {
-      login: '/users/login',
-      logout: '/users/login',
+      // 未ログイン時にリダイレクトされる先のURL
+      login: '/',
+      // ログアウトした後にリダイレクトされる先のURL
+      logout: '/',
+      // コールバック用のURL。Oauth認証（SNS認証）等に使われる。
       callback: false,
-      home: '/dashboard',
+      // ログイン後にリダイレクトされる先のURL
+      home: '/',
     },
   },
   axios: {
