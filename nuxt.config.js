@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+import { sortRoutes } from '@nuxt/utils'
+
 
 export default {
   server: {
@@ -99,6 +101,14 @@ export default {
     baseURL: 'http://localhost:3000/',
   },
   router: {
-    middleware: ['auth']
+    middleware: ['auth'],
+    // Nuxtにより「.nuxt/router.js」に自動生成されたルートを拡張
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'dashboard',
+        path: '/',
+        component: resolve(__dirname, 'pages/dashboard.vue')
+      })
+    }
   }
 }
