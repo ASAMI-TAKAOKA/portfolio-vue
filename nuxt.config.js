@@ -86,9 +86,9 @@ export default {
     },
     redirect: {
       // 未ログイン時にリダイレクトされる先のURL
-      login: '/',
+      login: '/users/login',
       // ログアウトした後にリダイレクトされる先のURL
-      logout: '/',
+      logout: '/users/login',
       // コールバック用のURL。Oauth認証（SNS認証）等に使われる。
       callback: false,
       // ログイン後にリダイレクトされる先のURL

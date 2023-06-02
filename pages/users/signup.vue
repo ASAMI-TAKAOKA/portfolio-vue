@@ -69,7 +69,7 @@ export default {
         .then((response) => {
           window.location.href = '/afterSignedUp'
       })
-    }
+    },
   },
 }
 </script>

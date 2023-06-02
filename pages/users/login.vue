@@ -1,5 +1,12 @@
 <template>
   <v-container>
+    <v-btn
+      color="primary"
+      class="white--text"
+      @click="goToSignup"
+    >
+      会員登録はこちらから
+    </v-btn>
     <v-card width="400px" class="mx-auto mt-5">
       <v-card-title>
         <h1 class="display-1">
@@ -64,6 +71,9 @@ export default {
           }
         )
       },
+      goToSignup() {
+        this.$router.push('/users/signup')
+      }
 }
 }
 </script>

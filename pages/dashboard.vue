@@ -24,24 +24,6 @@
     </v-btn>
       <!-- <v-btn color="secondary" @click="openAddCategoryModal">カテゴリー追加</v-btn> -->
 
-      <!-- 未ログインの場合 -->
-      <!-- 各種ボタンを表示（横並び） -->
-      <v-btn
-        v-if="!$auth.loggedIn"
-        color="light-green darken-1"
-        class="white--text"
-        @click="openLogin"
-      >
-      Loginする
-      </v-btn>
-      <v-btn
-        v-if="!$auth.loggedIn"
-        color="primary"
-        @click="openSignup"
-      >
-      新規会員登録
-      </v-btn>
-
       <!-- 各種モーダル -->
       <post-create-modal ref="postCreateModal" :categories="categories" :parent-category-array="parentCategoryArray"></post-create-modal>
       <add-category-modal ref="addCategoryModal"></add-category-modal>
@@ -108,12 +90,6 @@ export default {
     },
     openAddCategoryModal() {
       this.$refs.addCategoryModal.openDialog()
-    },
-    openLogin() {
-      this.$router.push('/users/login')
-    },
-    openSignup() {
-      this.$router.push('/users/signup')
     }
   }
 }
