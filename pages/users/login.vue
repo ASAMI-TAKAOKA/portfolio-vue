@@ -1,12 +1,5 @@
 <template>
   <v-container>
-    <v-btn
-      color="primary"
-      class="white--text"
-      @click="goToSignup"
-    >
-      会員登録はこちらから
-    </v-btn>
     <v-card width="400px" class="mx-auto mt-5">
       <v-card-title>
         <h1 class="display-1">
@@ -57,23 +50,16 @@ export default {
             password: this.password,
           },
         })
-        .then(
-          (response) => {
-            // レスポンスで返ってきた、認証に必要な情報をlocalStorageに保存
-            localStorage.setItem('access-token', response.headers['access-token'])
-            localStorage.setItem('client', response.headers.client)
-            localStorage.setItem('uid', response.headers.uid)
-            localStorage.setItem('token-type', response.headers['token-type'])
+        .then((response) => {
+          // ユーザーオブジェクトをセットする
+          // setUserメソッドにより$auth.userでデータを取得できるようになる
+          this.$auth.setUser(response.data.data)
             return response
-          },
-          (error) => {
-            return error
-          }
-        )
-      },
-      goToSignup() {
-        this.$router.push('/users/signup')
+          })
+        .catch((error) => {
+          return error
+        })
       }
-}
+  }
 }
 </script>
