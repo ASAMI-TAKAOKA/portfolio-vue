@@ -48,8 +48,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/axios'
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -74,34 +73,34 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
-  auth: {
-    strategies: {
-      //localという認証方法を使う場合
-      local: {
-        //axiosでアクセスする際の設定
-        endpoints: {
-          login: { url: '/api/v1/auth/sign_in', method: 'post', propertyName: 'token' },
-          logout: { url: '/api/v1/auth/sign_out', method: 'delete' },
-          user: false,
-        },
-      }
-    },
-    redirect: {
-      // 未ログイン時にリダイレクトされる先のURL
-      login: '/users/login',
-      // ログアウトした後にリダイレクトされる先のURL
-      logout: '/',
-      // コールバック用のURL。Oauth認証（SNS認証）等に使われる。
-      callback: false,
-      // ログイン後にリダイレクトされる先のURL
-      home: '/',
-    },
-  },
+  // auth: {
+  //   strategies: {
+  //     //localという認証方法を使う場合
+  //     local: {
+  //       //axiosでアクセスする際の設定
+  //       endpoints: {
+  //         login: { url: '/api/v1/auth/sign_in', method: 'post', propertyName: 'token' },
+  //         logout: { url: '/api/v1/auth/sign_out', method: 'delete' },
+  //         user: false,
+  //       },
+  //     }
+  //   },
+  //   redirect: {
+  //     // 未ログイン時にリダイレクトされる先のURL
+  //     login: '/users/login',
+  //     // ログアウトした後にリダイレクトされる先のURL
+  //     logout: '/',
+  //     // コールバック用のURL。Oauth認証（SNS認証）等に使われる。
+  //     callback: false,
+  //     // ログイン後にリダイレクトされる先のURL
+  //     home: '/',
+  //   },
+  // },
   axios: {
     baseURL: 'http://localhost:3000/',
   },
   router: {
-    middleware: ['auth'],
+    // middleware: ['auth'],
     // Nuxtにより「.nuxt/router.js」に自動生成されたルートを拡張
     extendRoutes(routes, resolve) {
       routes.push({

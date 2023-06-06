@@ -2,7 +2,6 @@
   <v-app>
     <v-container>
       <v-btn
-      v-if="!$auth.loggedIn"
       color="light-green darken-1"
       class="white--text"
       @click="goToLogin"
@@ -10,7 +9,6 @@
       ログイン
     </v-btn>
     <v-btn
-      v-if="!$auth.loggedIn"
       color="primary"
       class="white--text"
       @click="goToSignup"
@@ -18,17 +16,8 @@
       会員登録
     </v-btn>
       <h1>ダッシュボード</h1>
-      <div v-if="$auth.loggedIn">
-        <h3>ログイン済み</h3>
-      </div>
-      <div v-if="!$auth.loggedIn">
-        <h3>未ログイン状態</h3>
-      </div>
-      <p>{{ $auth.user }}</p>
-      <!-- ログイン済みの場合 -->
       <!-- 各種ボタンを表示（横並び） -->
       <v-btn
-        v-if="$auth.loggedIn"
         color="light-green darken-1"
         class="white--text"
         @click="logout"
@@ -36,7 +25,6 @@
       Logoutする
       </v-btn>
       <v-btn
-        v-if="$auth.loggedIn"
         color="primary"
         @click="openPostCreateModal"
       >
@@ -62,7 +50,7 @@ import addCategoryModal from '../components/addCategoryModal.vue'
 import ContentsCard from '../components/contentsCard.vue'
 
 export default {
-  middleware: 'auth',
+  // middleware: 'auth',
   components: {
     ContentsCard
   },
@@ -104,7 +92,7 @@ export default {
 },
   methods: {
     logout() {
-      this.$auth.logout()
+      // ログアウト処理を記載する
     },
     openPostCreateModal() {
       this.$refs.postCreateModal.openDialog()
