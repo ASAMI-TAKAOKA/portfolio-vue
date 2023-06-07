@@ -2,7 +2,9 @@
   "menus": {
     "about": "サイトについて",
     "posts": "投稿一覧",
-    "contact": "お問合せ"
+    "contact": "お問合せ",
+    "company": "会社情報",
+    "abcde": "仮りのメニュー"
   },
   "pages": {
     "signup": "会員登録",

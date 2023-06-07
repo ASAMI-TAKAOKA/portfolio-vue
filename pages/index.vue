@@ -68,6 +68,8 @@
 import HomeAbout from '~/components/Home/HomeAbout'
 import HomePosts from '~/components/Home/HomePosts'
 import HomeContact from '~/components/Home/HomeContact'
+import HomeCompany from '../components/Home/HomeCompany'
+import HomeAbcde from '../components/Home/HomeAbcde'
 import HomeAppBar from '../components/Home/HomeAppBar'
 import AppFooter from '../components/App/AppFooter'
 
@@ -76,6 +78,8 @@ export default {
     HomeAbout,
     HomePosts,
     HomeContact,
+    HomeCompany,
+    HomeAbcde,
     HomeAppBar,
     AppFooter
   },
@@ -85,6 +89,8 @@ export default {
         { title: 'about', subtitle: 'このサイトは節約アプリケーションです。' },
         { title: 'posts', subtitle: 'みんなの投稿です。' },
         { title: 'contact', subtitle: 'お気軽にご連絡ください。' },
+        { title: 'company', subtitle: '会社について' },
+        { title: 'abcde', subtitle: '仮りのメニューです。' },
       ],
       imgHeight: 500,
     }
