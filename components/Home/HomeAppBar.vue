@@ -11,11 +11,10 @@
     <app-logo
       @click.native="goTo('scroll-top')"
     />
-    <v-toolbar-title
+    <app-title
       class="hidden-mobile-and-down"
     >
-      {{ appName }}
-    </v-toolbar-title>
+    </app-title>
     <v-spacer />
     <v-toolbar-items class="ml-2 hidden-ipad-and-down">
       <v-btn
@@ -79,9 +78,8 @@ export default {
     }
   },
   // $storeはstore/index.jsの中身を使用するためのcontext
-  data ({ $config: { appName }, $store }) {
+  data ({ $store }) {
     return {
-      appName,
       scrollY: 0,
       homeAppBarHeight: $store.state.styles.homeAppBarHeight
     }
