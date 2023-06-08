@@ -30,6 +30,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/sass/main.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -56,7 +57,10 @@ export default {
   },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    // カスタムCSSファイルパス
+    customVariables: ['~/assets/sass/variables.scss'],
+    // カスタムCSSを有効にするフラグ
+    treeShake: true,
     theme: {
       dark: false,
       themes: {
@@ -67,7 +71,9 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          success: colors.green.accent3,
+          background: 'f6f6f4',
+          appblue: '1867C0'
         }
       }
     }
