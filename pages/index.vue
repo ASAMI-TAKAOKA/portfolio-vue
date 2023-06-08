@@ -89,7 +89,7 @@ export default {
         { title: 'about', subtitle: 'このサイトは節約アプリケーションです。' },
         { title: 'posts', subtitle: 'みんなの投稿です。' },
         { title: 'contact', subtitle: 'お気軽にご連絡ください。' },
-        { title: 'company', subtitle: '会社について' },
+        { title: 'company', subtitle: 'この会社について' },
         { title: 'abcde', subtitle: '仮りのメニューです。' },
       ],
       imgHeight: 500,

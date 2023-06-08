@@ -36,7 +36,7 @@
       <post-create-modal ref="postCreateModal" :categories="categories" :parent-category-array="parentCategoryArray"></post-create-modal>
       <add-category-modal ref="addCategoryModal"></add-category-modal>
 
-      <!-- コンテンツ一覧を表示 -->
+      <!-- 投稿一覧を表示 -->
       <contents-card
         :posts="postLists"
       />
