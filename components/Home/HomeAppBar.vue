@@ -27,8 +27,8 @@
         {{ $t(`menus.${menu.title}`) }}
       </v-btn>
     </v-toolbar-items>
-    <app-signup-button></app-signup-button>
-    <app-login-button></app-login-button>
+    <before-login-app-bar-signup-button />
+    <before-login-app-bar-login-button />
     <v-menu
       bottom
       nudge-left="110"
@@ -63,10 +63,14 @@
 
 <script>
 import AppLogo from '../App/AppLogo'
-import AppLoginButton from '../App/AppLoginButton'
-import AppSignupButton from '../App/AppSignupButton'
+import BeforeLoginAppBarLoginButton from '../BeforeLogin/BeforeLoginAppBarLoginButton'
+import BeforeLoginAppBarSignupButton from '../BeforeLogin/BeforeLoginAppBarSignupButton'
 
 export default {
+  components: { 
+    BeforeLoginAppBarLoginButton,
+    BeforeLoginAppBarSignupButton
+  },
   props: {
     menus: {
       type: Array,

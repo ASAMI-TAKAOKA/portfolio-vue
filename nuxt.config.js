@@ -35,7 +35,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/axios.js', ssr: false }
+    { src: '~/plugins/axios.js', ssr: false },
+    'plugins/axios',
+    'plugins/my-inject'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -125,12 +127,12 @@ export default {
   router: {
     // middleware: ['auth'],
     // Nuxtにより「.nuxt/router.js」に自動生成されたルートを拡張
-    extendRoutes(routes, resolve) {
-      routes.push({
-        name: 'dashboard',
-        path: '/',
-        component: resolve(__dirname, 'pages/dashboard.vue')
-      })
-    }
+    // extendRoutes(routes, resolve) {
+    //   routes.push({
+    //     name: 'dashboard',
+    //     path: '/',
+    //     component: resolve(__dirname, 'pages/dashboard.vue')
+    //   })
+    // }
   }
 }
