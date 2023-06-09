@@ -125,12 +125,12 @@ export default {
   router: {
     // middleware: ['auth'],
     // Nuxtにより「.nuxt/router.js」に自動生成されたルートを拡張
-    extendRoutes(routes, resolve) {
-      routes.push({
-        name: 'dashboard',
-        path: '/',
-        component: resolve(__dirname, 'pages/dashboard.vue')
-      })
-    }
+    // extendRoutes(routes, resolve) {
+    //   routes.push({
+    //     name: 'dashboard',
+    //     path: '/',
+    //     component: resolve(__dirname, 'pages/dashboard.vue')
+    //   })
+    // }
   }
 }

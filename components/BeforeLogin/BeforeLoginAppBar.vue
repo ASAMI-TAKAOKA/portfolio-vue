@@ -17,13 +17,20 @@
 
     <v-spacer />
 
-    <app-signup-button></app-signup-button>
-    <app-login-button></app-login-button>
+    <before-login-app-bar-signup-button />
+    <before-login-app-bar-login-button />
   </v-app-bar>
 </template>
 
 <script>
+import BeforeLoginAppBarLoginButton from '../BeforeLogin/BeforeLoginAppBarLoginButton'
+import BeforeLoginAppBarSignupButton from '../BeforeLogin/BeforeLoginAppBarSignupButton'
+
 export default {
+  components: { 
+    BeforeLoginAppBarLoginButton,
+    BeforeLoginAppBarSignupButton
+  },
   data ({ $store }) {
     return {
       homeAppBarHeight: $store.state.styles.homeAppBarHeight
