@@ -1,5 +1,7 @@
 <template>
   <v-text-field
+    :value="password"
+    @input="$emit('update:password', $event)"
     label="パスワードを入力"
     placeholder="8文字以上"
     outlined
@@ -8,5 +10,11 @@
 
 <script>
 export default {
+  props: {
+    password: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
