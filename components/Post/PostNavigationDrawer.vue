@@ -8,7 +8,7 @@
     <v-list>
       <!-- close button -->
       <template
-        v-if="isBreakPoint"
+        v-if="isMobileBreakPointLessThan"
       >
         <v-list-item
           @click="$emit('update:drawer', false)"
@@ -75,7 +75,7 @@ export default {
       get() { return this.drawer },
       set(val) { return this.$emit('update:drawer', val) }
     },
-    isBreakPoint() {
+    isMobileBreakPointLessThan() {
       const windowWidth = this.$vuetify.breakpoint.width
       return this.mobileBreakpoint > windowWidth
     }
