@@ -25,6 +25,7 @@
 import LoggedInAppBarVue from '../components/LoggedIn/LoggedInAppBar';
 
 export default {
+  middleware: 'get-post-current',
   components: { 
     LoggedInAppBarVue
   },

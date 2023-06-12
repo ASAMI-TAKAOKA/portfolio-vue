@@ -28,15 +28,24 @@ export const state = () => ({
 
 // 算出プロパティ。vueファイルで言うところのcomputed
 export const getters = {
-
 }
 
 // stateの値を変更できる唯一の場所
+// payloadの部分はcurrentPostでも良いが、公式ドキュメントに合わせてpayloadとしておく
 export const mutations = {
-
+  setCurrentPost(state, payload) {
+    state.post.current = payload
+  }
 }
 
 // アプリ全体のメソッドを置く場所。vueファイルで言うところのmethods
 export const actions = {
-
+  // { state, getters, commit, dispatch, rootState, rootGetters }
+  // rootState => ルート（store/index.js）のstateを取得
+  getCurrentPost({ state, commit }, params) {
+    const id = Number(params.id)
+    const currentPost =
+      state.post.list.find(post => post.id === id) || null
+    commit('setCurrentPost', currentPost)
+  }
 }
