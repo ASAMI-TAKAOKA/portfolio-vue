@@ -1,6 +1,6 @@
 // アプリ全体で共有したいことはstore/index.jsに書くことでVuexで保有する
 
-const redirectPath = 'posts'
+const homePath = 'posts'
 
 
 // stateは共通の変数。vueファイルで言うところのdata
@@ -10,9 +10,19 @@ export const state = () => ({
     homeAppBarHeight: 56
   },
   loggedIn: {
-    redirectPath: {
-      name: redirectPath
+    homePath: {
+      name: homePath
     }
+  },
+  post: {
+    current: null,
+    list: [
+      { id: 1, name: 'MyPost01', updatedAt: '2020-04-01T12:00:00+09:00' },
+      { id: 2, name: 'MyPost02', updatedAt: '2020-04-05T12:00:00+09:00' },
+      { id: 3, name: 'MyPost03', updatedAt: '2020-04-03T12:00:00+09:00' },
+      { id: 4, name: 'MyPost04', updatedAt: '2020-04-04T12:00:00+09:00' },
+      { id: 5, name: 'MyPost05', updatedAt: '2020-04-01T12:00:00+09:00' }
+    ]
   }
 })
 
