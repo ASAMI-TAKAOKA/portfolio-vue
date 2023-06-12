@@ -9,6 +9,19 @@ class MyInject {
     const title = this.app.i18n.t(jsonPath)
     return title
   }
+
+  // 日時フォーマット変換
+  dateformat(datestr) {
+    const dateTimeFormat = new Intl.DateTimeFormat(
+      'ja', { dateStyle: 'medium', timeStyle: 'short' }
+    )
+    return dateTimeFormat.format(new Date(datestr))
+  }
+
+  // 投稿記事のリンク
+  postLinkTo(id, name = 'post-id-dashboard') {
+    return { name, params: { id } }
+  }
 }
 
 // inject => オリジナルクラスを追加できる
