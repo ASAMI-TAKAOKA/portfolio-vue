@@ -8,9 +8,11 @@
     <!-- this.$refs.form.validate() -->
     <!-- this.$refs.form.reset() -->
     <!-- this.$refs.form.resetValidation() -->
+    <!-- preventとすることで、@submitの際にページがリロードされないようにできる -->
     <v-form
       ref="form"
       v-model="isValid"
+      @submit.prevent="login"
     >
       <user-form-email
         :email.sync="params.user.email"
@@ -30,12 +32,12 @@
         class="px-0"
       >
         <v-btn
+        type="submit"
         :disabled="!isValid || loading"
         :loading="loading"
         block
         color="appblue"
         class="white--text"
-        @click="login"
         >
         ログインする
         </v-btn>
