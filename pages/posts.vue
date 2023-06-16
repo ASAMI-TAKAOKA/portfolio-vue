@@ -138,6 +138,7 @@
 import homeImg from '~/assets/images/logged-in/home.png'
 export default {
   layout: 'logged-in',
+  middleware: ['get-post-list'],
   data () {
     return {
       homeImg,

@@ -4,6 +4,6 @@ export default async ({ store, $axios }) => {
   // 毎回このAPI通信が走ってしまうため。
   if (!store.state.post.list.length) {
     await $axios.get('/api/v1/posts')
-      .then(posts => store.dispatch('getpostList', posts))
+      .then(posts => store.dispatch('getPostList', posts))
   }
 }

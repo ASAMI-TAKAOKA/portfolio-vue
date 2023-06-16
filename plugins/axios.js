@@ -1,26 +1,10 @@
-// export default function({ $axios }) {
-//   $axios.onRequest(config => {
-//     config.headers.common['X-Requested-With'] = 'XMLHttpRequest'
-//     config.headers.client = window.localStorage.getItem("client")
-//     config.headers["access-token"] = window.localStorage.getItem("access-token")
-//     config.headers.uid = window.localStorage.getItem("uid")
-//     config.headers["token-type"] = window.localStorage.getItem("token-type")
-//   })
-
-//   $axios.onResponse(response => {
-//     if (response.headers.client) {
-//       localStorage.setItem("access-token", response.headers["access-token"])
-//       localStorage.setItem("client", response.headers.client)
-//       localStorage.setItem("uid", response.headers.uid)
-//       localStorage.setItem("token-type", response.headers["token-type"])
-//     }
-//   })
-// }
-
-export default ({ $axios }) => {
+export default ({ $axios, $auth }) => {
   // リクエストログ
   $axios.onRequest((config) => {
     config.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+    if($auth.token) {
+      config.headers.common.Authorization = `Bearer ${$auth.token}`
+    }
     console.log(config)
   })
   // レスポンスログ
