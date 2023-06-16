@@ -1,6 +1,5 @@
 import jwtDecode from 'jwt-decode'
 
-// 認証関連のコードは今後このclass内に追加していく
 class Authentication {
   constructor(ctx) {
     this.store = ctx.store
