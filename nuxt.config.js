@@ -35,7 +35,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/axios.js', ssr: false },
+    'plugins/auth',
     'plugins/axios',
     'plugins/my-inject'
   ],
@@ -123,6 +123,9 @@ export default {
   // },
   axios: {
     baseURL: 'http://localhost:3000/',
+    // クロスドメインで認証情報を共有する
+    // https://axios.nuxtjs.org/options/#credentials
+    credentials: true
   },
   router: {
     // middleware: ['auth'],
