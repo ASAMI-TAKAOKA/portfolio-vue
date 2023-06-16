@@ -68,14 +68,18 @@ export default {
       this.loading = true
       if(this.isValid){
         await this.$axios.post('api/v1/auth_token', this.params)
-          .then(response => this.authSuccessful(response))
+          .then(response => this.authSuccessful(response.data))
           .catch(error => this.authFailure(error))
       }
       this.loading = false
     },
     authSuccessful(response) {
       console.log('authSuccessful', response)
-      // TODO: ログイン処理
+      this.$auth.login(response)
+      console.log('token', this.$auth.token)
+      console.log('expires', this.$auth.expires)
+      console.log('payload', this.$auth.payload)
+      console.log('user', this.$auth.user)
       // TODO: 記憶ルートリダイレクト
       this.$router.push(this.redirectPath)
     },
