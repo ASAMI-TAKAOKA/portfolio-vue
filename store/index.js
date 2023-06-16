@@ -23,14 +23,6 @@ export const state = () => ({
       { id: 4, name: 'MyPost04', updatedAt: '2020-04-04T12:00:00+09:00' },
       { id: 5, name: 'MyPost05', updatedAt: '2020-04-01T12:00:00+09:00' }
     ]
-  },
-  user: {
-    current: null
-  },
-  auth: {
-    token: null,
-    expires: 0,
-    payload: {}
   }
 })
 
@@ -43,18 +35,6 @@ export const getters = {
 export const mutations = {
   setCurrentPost(state, payload) {
     state.post.current = payload
-  },
-  setCurrentUser (state, payload) {
-    state.user.current = payload
-  },
-  setAuthToken (state, payload) {
-    state.auth.token = payload
-  },
-  setAuthExpires (state, payload) {
-    state.auth.expires = payload
-  },
-  setAuthPayload (state, payload) {
-    state.auth.payload = payload
   }
 }
 
@@ -67,19 +47,5 @@ export const actions = {
     const currentPost =
       state.post.list.find(post => post.id === id) || null
     commit('setCurrentPost', currentPost)
-  },
-  getCurrentUser ({ commit }, user) {
-    commit('setCurrentUser', user)
-  },
-  getAuthToken ({ commit }, token) {
-    commit('setAuthToken', token)
-  },
-  getAuthExpires ({ commit }, expires) {
-    expires = expires || 0
-    commit('setAuthExpires', expires)
-  },
-  getAuthPayload ({ commit }, jwtPayload) {
-    jwtPayload = jwtPayload || {}
-    commit('setAuthPayload', jwtPayload)
   }
 }
