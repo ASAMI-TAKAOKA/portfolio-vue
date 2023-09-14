@@ -36,6 +36,8 @@ export const getters = {
 // payloadの部分はcurrentPostでも良いが、公式ドキュメントに合わせてpayloadとしておく
 export const mutations = {
   setPostList(state, payload) {
+    // データをセットする前にコンソールに出力
+    console.log('Setting post list:', payload)
     state.post.list = payload
   },
   setCurrentPost(state, payload) {
@@ -63,11 +65,16 @@ export const actions = {
   getPostList({ commit }, posts) {
     posts = posts || []
     commit('setPostList', posts)
+    // データをコンソールに出力して確認。
+    // middlewareでdispatchしたデータを取得できている。
+    console.log('Fetched posts:', posts)
   },
   getCurrentPost({ state, commit }, params) {
-    const id = Number(params.id)
-    const currentPost =
-      state.post.list.find(post => post.id === id) || null
+    let currentPost = null
+    if (params & params.id) {
+      const id = Number(params.id)
+      currentPost = state.post.list.find(post => post.id === id) || null
+    }
     commit('setCurrentPost', currentPost)
   },
   getCurrentUser ({ commit }, user) {

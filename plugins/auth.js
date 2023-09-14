@@ -37,6 +37,29 @@ class Authentication {
   login (response) {
     this.setAuth(response)
   }
+
+  // Vuexの値を初期値に戻す
+  resetVuex () {
+    this.setAuth({ token: null, expires: 0, user: null })
+    this.store.dispatch('getCurrentPost', null)
+    this.store.dispatch('getPostList', [])
+  }
+
+  // 動画89の7:39から続き。まずはidがnullですよとエラーが返ってきてしまうのを直す
+  // axiosのレスポンス401を許容する
+  // Doc: https://github.com/axios/axios#request-config
+  resolveUnauthorized (status) {
+    return (status >= 200 && status < 300) || (status === 401)
+  }
+
+  // ログアウト業務
+  async logout () {
+    await this.$axios.delete(
+      '/api/v1/auth_token',
+      { validateStatus: status => this.resolveUnauthorized(status) }
+    )
+    this.resetVuex()
+  }
 }
 
 export default ({ store, $axios }, inject) => {

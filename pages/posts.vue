@@ -65,7 +65,7 @@
 
                 <!-- 最近の投稿記事 -->
                 <v-col
-                  v-for="(post, i) in recentPosts.slice(0, 2)"
+                  v-for="(post, i) in recentPosts"
                   :key="`card-post-${i}`"
                   cols="12"
                   :sm="card.sm"
@@ -167,12 +167,9 @@ export default {
   },
   computed: {
     recentPosts () {
-      const copyPosts = Array.from(this.$store.state.post.list)
-      return copyPosts.sort((a, b) => {
-        if (a.updatedAt > b.updatedAt) { return -1 }
-        if (a.updatedAt < b.updatedAt) { return 1 }
-        return 0
-      })
+      const copyPosts = this.$store.state.post.list.data
+      console.log(copyPosts)
+      return copyPosts
     }
   }
 }
