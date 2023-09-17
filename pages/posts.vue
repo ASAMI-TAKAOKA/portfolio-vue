@@ -167,7 +167,7 @@ export default {
   },
   computed: {
     recentPosts () {
-      const copyPosts = this.$store.state.post.list.data
+      const copyPosts = this.$store.state.post.list.data // Array.from()を外さないと、取得できない
       console.log(copyPosts)
       return copyPosts
     }
