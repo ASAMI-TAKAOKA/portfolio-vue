@@ -12,8 +12,11 @@ export default {
   // validate()は、バリデートに引っかかると404を返す組み込み関数
   // false を返す 場合：ページへのアクセスが拒否され、404エラーページを表示
   // バリデーションに失敗し、ページへのアクセスが許可されない
-  validate({ store, route }) {
-    return !!store.state.post.current && route.name !== 'post'
-  }
+  // TODO: falseを返してしまう。
+  // validate({ store, route }) {
+  //   const isValid = !!store.state.post.current && route.name !== 'post'
+  //   console.log('Validation result:', isValid)
+  //   return isValid
+  // }
 }
 </script>

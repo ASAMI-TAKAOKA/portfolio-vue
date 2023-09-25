@@ -39,9 +39,12 @@ export const mutations = {
     // データをセットする前にコンソールに出力
     console.log('Setting post list:', payload)
     state.post.list = payload
+    console.log('Setting post list type:', typeof state.post.list)
   },
   setCurrentPost(state, payload) {
+    console.log('Setting current post:', payload)
     state.post.current = payload
+    console.log('Setting current post type:', typeof state.post.current)
   },
   setCurrentUser (state, payload) {
     state.user.current = payload
@@ -71,11 +74,15 @@ export const actions = {
   },
   getCurrentPost({ state, commit }, params) {
     let currentPost = null
-    if (params & params.id) {
+    if (params && params.id) {
       const id = Number(params.id)
-      currentPost = state.post.list.find(post => post.id === id) || null
+      // .dataを追加することで取得に成功
+      currentPost = state.post.list.data.find(post => post.id === id) || null
     }
     commit('setCurrentPost', currentPost)
+    // データをコンソールに出力して確認。
+    // middlewareでdispatchしたデータを取得できている。
+    console.log('Fetched currentPost:', currentPost)
   },
   getCurrentUser ({ commit }, user) {
     commit('setCurrentUser', user)

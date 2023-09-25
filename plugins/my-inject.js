@@ -18,7 +18,7 @@ class MyInject {
     return dateTimeFormat.format(new Date(datestr))
   }
 
-  // 投稿記事のリンク
+  // 投稿記事のリンク用の関数
   postLinkTo(id, name = 'post-id-dashboard') {
     console.log(id)
     return { name, params: { id } }
