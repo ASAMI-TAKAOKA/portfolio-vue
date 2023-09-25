@@ -20,6 +20,7 @@ class MyInject {
 
   // 投稿記事のリンク
   postLinkTo(id, name = 'post-id-dashboard') {
+    console.log(id)
     return { name, params: { id } }
   }
 }
