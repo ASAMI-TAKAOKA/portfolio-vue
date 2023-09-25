@@ -1,4 +1,5 @@
 <template>
+  <!-- 削除予定 -->
   <v-app>
     <v-container>
       <v-card width="400px" class="mx-auto mt-5">

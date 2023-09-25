@@ -1,4 +1,5 @@
 <template>
+      <!-- 削除予定 -->
   <div class="contents-card pre-wrap">
     <v-container>
       <v-row>

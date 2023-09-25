@@ -1,4 +1,5 @@
 <template>
+      <!-- 削除予定 -->
   <div>
     <v-dialog v-model="dialog" max-width="500px">
       <v-card>
