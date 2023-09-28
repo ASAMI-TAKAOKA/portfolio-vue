@@ -45,7 +45,6 @@ class Authentication {
     this.store.dispatch('getPostList', [])
   }
 
-  // 動画89の7:39から続き。まずはidがnullですよとエラーが返ってきてしまうのを直す
   // axiosのレスポンス401を許容する
   // Doc: https://github.com/axios/axios#request-config
   resolveUnauthorized (status) {

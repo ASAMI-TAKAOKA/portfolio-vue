@@ -38,7 +38,8 @@ export default {
     'plugins/auth',
     { src: '~/plugins/axios.js', ssr: false },
     'plugins/axios',
-    'plugins/my-inject'
+    'plugins/my-inject',
+    'plugins/nuxt-client-init'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
