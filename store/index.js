@@ -71,13 +71,13 @@ export const actions = {
     // データをコンソールに出力して確認。
     // middlewareでdispatchしたデータを取得できている。
     console.log('Fetched posts:', posts)
+    console.log('Fetched posts type:', typeof posts)
   },
   getCurrentPost({ state, commit }, params) {
     let currentPost = null
     if (params && params.id) {
       const id = Number(params.id)
-      // .dataを追加することで取得に成功
-      currentPost = state.post.list.data.find(post => post.id === id) || null
+      currentPost = state.post.list.find(post => post.id === id) || null
     }
     commit('setCurrentPost', currentPost)
     // データをコンソールに出力して確認。

@@ -1,3 +1,5 @@
+// Vuexを読み込む前に実行される
+// Vuexのstateの値が全て初期化されるのを回避
 export default async ({ $auth, $axios }) => {
   console.log('Refreshing auth token...') // ログを追加
   // axiosのpostメソッドは第2引数はパラメーター、第3引数にオプションがくる

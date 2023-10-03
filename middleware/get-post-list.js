@@ -6,10 +6,11 @@ export default async ({ store, $axios }) => {
     await $axios.get('/api/v1/posts')
       .then(posts => {
         // APIから取得したデータをコンソールに出力
-        console.log(posts)
+        // .dataを追加することで取得に成功
+        console.log(posts.data)
 
         // データをストアにディスパッチ
-        store.dispatch('getPostList', posts)
+        store.dispatch('getPostList', posts.data)
       })
       .catch(error => {
         // エラーハンドリングが必要であればここでエラーを処理することもできます
